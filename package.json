@@ -1,0 +1,26 @@
+{
+  "name": "marketplace",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./src/app/bin/www"
+  },
+  "author": {
+    "name": "Wilson Rocha",
+    "linkedin": "https://www.linkedin.com/in/wilsonn-rocha/",
+    "github": "https://github.com/Sownatta"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^16.4.1",
+    "ejs": "^3.1.9",
+    "express": "~4.16.1",
+    "express-session": "^1.17.3",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  }
+}

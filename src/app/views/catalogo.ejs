@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo</title>
+</head>
+<body>
+    <h1>Lista de Produtos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Estoque</th>
+                <th>Categoria</th>
+                <th>Preço</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% productList.forEach(product => { %>
+                <tr>
+                    <td><%= product.Nome %></td>
+                    <td><%= product.Estoque %></td>
+                    <td><%= product.Categoria %></td>
+                    <td><%= product.Preco %></td>
+                    <td><%= product.Descricao %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuários</title>
+</head>
+<body>
+    <h1>Lista de Usuários</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>cpf</th>
+                <th>Data de Nascimento</th>
+                <th>Email</th>
+                <th>Senha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% userList.forEach(user => { %>
+                <tr>
+                    <td><%= user.Nome %></td>
+                    <td><%= user.CPF %></td>
+                    <td><%= user.DataDeNascimento %></td>
+                    <td><%= user.Email %></td>
+                    <td><%= user.Senha %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>
