@@ -37,11 +37,9 @@ exports.logged = async (req, res, next) => {
     
     const login = await userLogin(Email, Senha);
     if(login){
-        
-
-    req.session.usuario = {
-        Email: Email,
-        Senha: Senha
+        req.session.usuario = {
+            Email: Email,
+            Senha: Senha
     };
 
     res.cookie('nomeDoCookie', 'valorDoCookie', { maxAge: 900000, httpOnly: true });
