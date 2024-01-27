@@ -1,21 +1,23 @@
 const createError = require('http-errors');
 const routes = require('./routes')
 const express = require('express');
-/* const session = require('express-session'); */
+const session = require('express-session');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const createNewDb = require('./config/createdb');
 
+require('dotenv').config();
+
 const app = express();
 
 //Configuração Express-session
-/* app.use(session({
-  secret: process.env.API_KEY, // Segredo para assinar a sessão (mantenha-o seguro)
+app.use(session({
+  secret: "apisenha123",
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false } // Defina como true se estiver usando HTTPS
- })); */
+  cookie: { secure: false }
+ }));
  
 
 // view engine setup
@@ -25,7 +27,7 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
