@@ -16,9 +16,11 @@ routes.delete('/produto/:id', produtos.delete);
 //Rotas dos usuarios
 routes.get('/usuarios', usuarios.listarUsuarios);
 routes.get('/usuario/:id', usuarios.usuario);
-/* routes.get('/usuario/login', usuarios.login);
-routes.get('/usuario/logout', usuarios.logout); */
-routes.post('/cadastrar-usuario', usuarios.cadastrar);
+routes.get('/login', usuarios.login);
+routes.post('/login', usuarios.logged);
+//routes.get('/usuario/logout', usuarios.logout);
+routes.get('/cadastrar-usuario', usuarios.cadastrar);
+routes.post('/cadastrar-usuario', usuarios.cadastro);
 routes.put('/usuario/:id', usuarios.atualizarUsuario);
 routes.patch('/usuario/:id', usuarios.attParcialUsuario);
 routes.delete('/usuario/:id', usuarios.deletarUsuario);
