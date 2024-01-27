@@ -4,6 +4,7 @@ const atualizarUsuario = require(path.join(__dirname, '..', '..', 'config', 'upd
 const deletarUsuario = require(path.join(__dirname, '..', '..', 'config', 'delete'));
 const listUsersAll = require(path.join(__dirname, '..', '..', 'config', 'listUsersAll'));
 const listUserById = require(path.join(__dirname, '..', '..', 'config', 'listUserById'));
+const userLogin = require(path.join(__dirname, '..', '..', 'config', 'userLogin'));
 
 
 exports.listarUsuarios = async (req, res) => {
@@ -26,21 +27,31 @@ exports.usuario = (req, res) => {
     }
 };
 
-/* exports.login = (req, res, next) => {
-
-    req.session.cliente = {
-        Nome: req.body.Nome,
-        DataDeNascimento: req.body.DataDeNascimento,
-        cpf: req.body.cpf
-    };
-    
-    res.send('Sessão criada com sucesso!');
-
-    res.cookie('nomeDoCookie', 'valorDoCookie', { maxAge: 900000, httpOnly: true });
-    res.send('Cookie de sessão gerado com sucesso!');
+exports.login = (req, res, next) => {
+    res.render('../views/formLogin.ejs');
 };
 
-exports.logout = (req, res, auth) => {
+exports.logged = async (req, res, next) => {
+    const Email = req.body.Email
+    const Senha = req.body.Senha
+    
+    const login = await userLogin(Email, Senha);
+    if(login){
+        
+
+    req.session.usuario = {
+        Email: Email,
+        Senha: Senha
+    };
+
+    res.cookie('nomeDoCookie', 'valorDoCookie', { maxAge: 900000, httpOnly: true });
+    res.redirect('/catalogo');
+    } else{
+        res.redirect('/login');
+    }
+};
+
+/* exports.logout = (req, res, auth) => {
     res.send('Hello World!')
 
     res.clearCookie('nomeDoCookie');
@@ -48,24 +59,21 @@ exports.logout = (req, res, auth) => {
 }; */
 
 exports.cadastrar = (req, res) => {
-    const usuario = {
-        Nome: req.body.Nome,
-        DataDeNascimento: req.body.DataDeNascimento,
-        cpf: req.body.cpf,
-        email: req.body.Email,
-        senha: req.body.Senha
-    };
+    res.render('../views/formUser.ejs');
+}
+
+exports.cadastro = (req, res) => {
+    const usuario = req.body;
 
     cadastrarUsuario('usuarios', usuario, (id) => {
         res.send(`Usuário com id ${id} cadastrado com sucesso!`);
     });
-    
 };
 
 exports.atualizarUsuario = (req, res) => {
     const id = req.params.id;
     const usuario = {
-        ome: req.body.Nome,
+        Nome: req.body.Nome,
         DataDeNascimento: req.body.DataDeNascimento,
         cpf: req.body.cpf,
         email: req.body.Email,
