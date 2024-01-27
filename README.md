@@ -98,5 +98,5 @@ A persistencia dos dados pode ocorrer via JSON. Tera pontos extras quem realizar
 - GitHub: [Ícaro Santos](https://github.com/)
 
 ### Gabriel
-- LinkedIn: [Gabriel](https://www.linkedin.com/in/)
-- GitHub: [Gabriel](https://github.com/)
+- LinkedIn: [Gabriel Soares](https://www.linkedin.com/in/gabrielsoarespebr/)
+- GitHub: [Gabriel](https://github.com/gabrielsoarespebr)
