@@ -76,6 +76,16 @@ section {
   background-color: #0056b3;
 }
 
+label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+select {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
 
 /*==> Login <==*/
 
