@@ -29,16 +29,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-/* function auth(req, res, next) {
-  if (req.headers.authorization === process.env.API_KEY) {
-    next();
-    } else {
-    res.status(401).send('Não autorizado');
-    }   
-} */
-
+app.use(express.static(path.join(__dirname, '..', 'public', 'stylesheets')));
+app.use(express.static(path.join(__dirname, '..', 'public', 'images')));
 app.use(routes);
 
 //Criação do Banco de dados
