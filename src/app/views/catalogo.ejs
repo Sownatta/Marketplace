@@ -1,15 +1,23 @@
 <div class="product-container">
-    <% productList.forEach(product => { %>
-      <div class="product-card">
-        <img src="<%= product.ImgURL %>" alt="<%= product.Nome %>" class="product-image">
-        <div class="product-details">
-          <h2><%= product.Nome %></h2>
-          <p><strong>Estoque:</strong> <%= product.Estoque %></p>
-          <p><strong>Categoria:</strong> <%= product.Categoria %></p>
-          <p><strong>Preço:</strong> R$ <%= product.Preco %></p>
-          <p><strong>Descrição:</strong> <%= product.Descricao %></p>
-          <a href="/produto/<%= product.ID %>" class="product-button">Ver Detalhes</a>
-        </div>
+  <% productList.forEach(product => { %>
+    <div class="product-card">
+      <img src="<%= product.ImgURL %>" alt="<%= product.Nome %>" class="product-image">
+      <div class="product-details">
+        <h2><%= product.Nome %></h2>
+        <p><strong>Estoque:</strong> <%= product.Estoque %></p>
+        <p><strong>Categoria:</strong> <%= product.CategoriaNome %></p>
+        <p><strong>Preço:</strong> R$ <%= product.Preco %></p>
+        <p><strong>Descrição:</strong> <%= product.Descricao %></p>
+        <p><strong>Vendedor:</strong> <%= product.UsuarioNome %></p>
+        <a href="/produto/<%= product.ID %>" class="product-button">Ver Detalhes</a>
       </div>
-    <% }); %>
-  </div>
+    </div>
+  <% }); %>
+</div>
+<label for="categoria">Filtrar por Categoria:</label>
+  <select id="categoria" name="categoria">
+      <option value="">Todas as Categorias</option>
+      <% categorias.forEach(categoria => { %>
+          <option value="<%= categoria %>"><%= categoria.Nome %></option>
+      <% }); %>
+  </select>
