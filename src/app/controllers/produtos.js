@@ -3,30 +3,37 @@ const consultById = require("../../config/consultById");
 const deleteProduto = require("../../config/delete");
 const insertProduto = require("../../config/insert");
 const updateProduto = require("../../config/update");
+// const { propfind } = require("../../routes");
 
 exports.redirect = (req,res) => {
     res.redirect('/home');
 };
 
 exports.home = (req, res) => {
-    res.render('../views/home.ejs');
+    res.render('layout', { body: '../views/home.ejs' });
 };
 
-exports.produto = (req, res) => {
+exports.produto = async (req, res) => {
     const id = req.params.id;
-    const produto = consultById(id);
 
-    if (produto) {
-        res.send(produto);
-    } else {
-        res.status(404).send('Produto não encontrado.');
-    }
+    try {
+        const produto = await consultById(id);
+    
+        if (produto && produto.length > 0) {
+          res.render('layout', { body: '../views/produto.ejs', product: produto[0] });
+        } else {
+          res.status(404).send('Produto não encontrado.');
+        }
+      } catch (error) {
+        console.error(error);
+        res.status(500).send('Erro ao buscar o produto por ID.');
+      }
 };
 
 exports.catalogo = async (req, res) => {
     try {
         const productList = await listAll();
-        res.render('../views/catalogo.ejs', { productList });
+        res.render('layout', { body: '../views/catalogo.ejs', productList });
     } catch (err) {
         res.status(500).send('Erro ao recuperar a lista de produtos.');
     }

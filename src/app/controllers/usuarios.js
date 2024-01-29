@@ -10,7 +10,7 @@ const userLogin = require(path.join(__dirname, '..', '..', 'config', 'userLogin'
 exports.listarUsuarios = async (req, res) => {
     try {
         const userList = await listUsersAll();
-        res.render('../views/userList.ejs', { userList });
+        res.render('layout', { body: '../views/userList.ejs', userList });
     } catch (err) {
         res.status(500).send('Erro ao recuperar a lista de usuários.');
     }
@@ -28,7 +28,7 @@ exports.usuario = (req, res) => {
 };
 
 exports.login = (req, res, next) => {
-    res.render('../views/formLogin.ejs');
+    res.render('layout', { body: '../views/formLogin.ejs' });
 };
 
 exports.logged = async (req, res, next) => {
@@ -57,7 +57,7 @@ exports.logged = async (req, res, next) => {
 }; */
 
 exports.cadastrar = (req, res) => {
-    res.render('../views/formUser.ejs');
+    res.render('layout', { body: '../views/formUser.ejs' });
 }
 
 exports.cadastro = (req, res) => {
