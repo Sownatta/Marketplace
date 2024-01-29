@@ -1,9 +1,10 @@
 const listAll = require("../../config/consultAll");
+const listAllProducts = require("../../config/listAllProducts");
 const consultById = require("../../config/consultById");
+const listByCategory = require("../../config/listByCategory")
 const deleteProduto = require("../../config/delete");
 const insertProduto = require("../../config/insert");
 const updateProduto = require("../../config/update");
-// const { propfind } = require("../../routes");
 
 exports.redirect = (req,res) => {
     res.redirect('/home');
@@ -32,36 +33,47 @@ exports.produto = async (req, res) => {
 
 exports.catalogo = async (req, res) => {
     try {
-        const productList = await listAll();
-        res.render('layout', { body: '../views/catalogo.ejs', productList });
+        const categorias = await listAll('categorias');
+
+        let productList;
+
+        if (req.query.categoria) {
+            productList = await listByCategory(req.query.categoria);
+        } else {
+            productList = await listAllProducts();
+        }
+
+        res.render('layout', { body: '../views/catalogo.ejs',  productList, categorias });
     } catch (err) {
         res.status(500).send('Erro ao recuperar a lista de produtos.');
     }
 };
 
-exports.inserir = (req, res) => {
+exports.inserir = (req, res, next) => {
     const produto = {
         Nome: req.body.Nome,
         Estoque: req.body.Estoque,
-        Categoria: req.body.Categoria,
+        CategoriaID: req.body.CategoriaID,
         Preco: req.body.Preco,
         Descricao: req.body.Descricao,
-        ImgURL: req.body.ImgURL
+        ImgURL: req.body.ImgURL,
+        UsuarioID: req.body.UsuarioID
     };
 
     insertProduto('produtos', produto);
     res.send('Produto inserido com sucesso!');
 };
 
-exports.atualizar = (req, res) => {
+exports.atualizar = (req, res, next) => {
     const id = req.params.id;
     const produto = {
         Nome: req.body.Nome,
         Estoque: req.body.Estoque,
-        Categoria: req.body.Categoria,
+        CategoriaID: req.body.CategoriaID,
         Preco: req.body.Preco,
         Descricao: req.body.Descricao,
-        ImgURL: req.body.ImgURL
+        ImgURL: req.body.ImgURL,
+        UsuarioID: req.body.UsuarioID
     };
 
     updateProduto(id, 'produtos', produto);
@@ -69,7 +81,7 @@ exports.atualizar = (req, res) => {
     res.send(`Produto com ID ${id} atualizado com sucesso!`);
 };
 
-exports.atualizarParcial = (req, res) => {
+exports.atualizarParcial = (req, res, next) => {
     const id = req.params.id;
     const dadosAtualizados = req.body;
 
@@ -82,7 +94,7 @@ exports.atualizarParcial = (req, res) => {
     }
 };
 
-exports.delete = (req, res) => {
+exports.delete = (req, res, next) => {
     const id = req.params.id;
     deleteProduto(id, 'produtos');
     res.send('Produto excluído com sucesso!');
