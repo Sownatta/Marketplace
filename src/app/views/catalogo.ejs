@@ -1,33 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogo</title>
-</head>
-<body>
-    <h1>Lista de Produtos</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Estoque</th>
-                <th>Categoria</th>
-                <th>Preço</th>
-                <th>Descrição</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% productList.forEach(product => { %>
-                <tr>
-                    <td><%= product.Nome %></td>
-                    <td><%= product.Estoque %></td>
-                    <td><%= product.Categoria %></td>
-                    <td><%= product.Preco %></td>
-                    <td><%= product.Descricao %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-</body>
-</html>
+<div class="product-container">
+    <% productList.forEach(product => { %>
+      <div class="product-card">
+        <img src="<%= product.ImgURL %>" alt="<%= product.Nome %>" class="product-image">
+        <div class="product-details">
+          <h2><%= product.Nome %></h2>
+          <p><strong>Estoque:</strong> <%= product.Estoque %></p>
+          <p><strong>Categoria:</strong> <%= product.Categoria %></p>
+          <p><strong>Preço:</strong> R$ <%= product.Preco %></p>
+          <p><strong>Descrição:</strong> <%= product.Descricao %></p>
+          <a href="/produto/<%= product.ID %>" class="product-button">Ver Detalhes</a>
+        </div>
+      </div>
+    <% }); %>
+  </div>
