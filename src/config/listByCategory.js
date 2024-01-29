@@ -1,15 +1,12 @@
-// CONSULTA TODOS:
-async function listAll(tabela){
-
+async function listByCategory(categoria) {
     const sqlite3 = require('sqlite3').verbose();
-
     const db = new sqlite3.Database('./src/database.db');
 
-    const sqlConsultaTodos = `SELECT * FROM ${tabela}`;
+    const sqlConsultaPorCategoria = 'SELECT * FROM produtos WHERE Categoria = ?';
 
     try {
-        const list = await new Promise((resolve, reject) => {
-            db.all(sqlConsultaTodos, [], (err, rows) => {
+        const productList = await new Promise((resolve, reject) => {
+            db.all(sqlConsultaPorCategoria, [categoria], (err, rows) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -20,13 +17,12 @@ async function listAll(tabela){
 
         db.close();
 
-        return list;
+        return productList;
     } catch (err) {
         console.error(err);
         db.close();
         throw err;
     }
-
 }
 
-module.exports = listAll;
+module.exports = listByCategory;
