@@ -1,7 +1,7 @@
 class Produto {
 
-    constructor (Nome, Estoque, Categoria, Preco, Descricao, ImgURL) {
-        Object.assign(this, { Nome, Estoque, Categoria, Preco, Descricao, ImgURL });
+    constructor (Nome, Estoque, CategoriaID, Preco, Descricao, ImgURL, UsuarioID) {
+        Object.assign(this, { Nome, Estoque, CategoriaID, Preco, Descricao, ImgURL, UsuarioID });
     }
     
 }

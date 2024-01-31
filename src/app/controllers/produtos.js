@@ -5,6 +5,7 @@ const listByCategory = require("../../config/listByCategory")
 const deleteProduto = require("../../config/delete");
 const insertProduto = require("../../config/insert");
 const updateProduto = require("../../config/update");
+const getProdutoUsuarioID = require("../../config/getProdutoUsuarioID");
 
 exports.redirect = (req,res) => {
     res.redirect('/home');
@@ -20,8 +21,8 @@ exports.produto = async (req, res) => {
     try {
         const produto = await consultById(id);
     
-        if (produto && produto.length > 0) {
-          res.render('layout', { body: '../views/produto.ejs', product: produto[0] });
+        if (produto) {
+          res.render('layoutAlt', { body: '../views/produto.ejs', product: produto[0] });
         } else {
           res.status(404).send('Produto não encontrado.');
         }
@@ -31,7 +32,7 @@ exports.produto = async (req, res) => {
       }
 };
 
-exports.catalogo = async (req, res) => {
+exports.catalogo = async (req, res, next) => {
     try {
         const categorias = await listAll('categorias');
 
@@ -49,6 +50,10 @@ exports.catalogo = async (req, res) => {
     }
 };
 
+exports.cadastrarProduto = (req, res, next) => {
+    res.render('layout', { body: '../views/formProduto.ejs' })
+}
+
 exports.inserir = (req, res, next) => {
     const produto = {
         Nome: req.body.Nome,
@@ -57,12 +62,18 @@ exports.inserir = (req, res, next) => {
         Preco: req.body.Preco,
         Descricao: req.body.Descricao,
         ImgURL: req.body.ImgURL,
-        UsuarioID: req.body.UsuarioID
+        UsuarioID: req.session.usuario.ID
     };
 
     insertProduto('produtos', produto);
-    res.send('Produto inserido com sucesso!');
+    res.redirect('/catalogo');
 };
+
+exports.atualizarProduto = (req, res) => {
+    const id = req.params.id;
+
+    res.render('layoutAlt', { body: '../views/formEdit.ejs', id })
+}
 
 exports.atualizar = (req, res, next) => {
     const id = req.params.id;

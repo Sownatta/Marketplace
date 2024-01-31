@@ -32,29 +32,26 @@ exports.login = (req, res, next) => {
 };
 
 exports.logged = async (req, res, next) => {
-    const Email = req.body.Email
-    const Senha = req.body.Senha
-    
-    const login = await userLogin(Email, Senha);
-    if(login){
+    const Email = req.body.Email;
+    const Senha = req.body.Senha;
+
+    const usuario = await userLogin(Email, Senha);
+
+    if (usuario) {
         req.session.usuario = {
             Email: Email,
-            Senha: Senha
-    };
+            Senha: Senha,
+            ID: usuario.ID
+        };
 
-    res.cookie('nomeDoCookie', 'valorDoCookie', { maxAge: 900000, httpOnly: true });
-    res.redirect('/catalogo');
-    } else{
+        console.log('Usuário logado:', req.session.usuario.ID);
+
+        res.cookie('nomeDoCookie', 'valorDoCookie', { maxAge: 900000, httpOnly: true });
+        res.redirect('/catalogo');
+    } else {
         res.redirect('/login');
     }
 };
-
-/* exports.logout = (req, res, auth) => {
-    res.send('Hello World!')
-
-    res.clearCookie('nomeDoCookie');
-    res.send('Cookie de sessão removido com sucesso!');
-}; */
 
 exports.cadastrar = (req, res) => {
     res.render('layout', { body: '../views/formUser.ejs' });

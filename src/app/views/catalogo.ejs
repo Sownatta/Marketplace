@@ -10,14 +10,16 @@
         <p><strong>Descrição:</strong> <%= product.Descricao %></p>
         <p><strong>Vendedor:</strong> <%= product.UsuarioNome %></p>
         <a href="/produto/<%= product.ID %>" class="product-button">Ver Detalhes</a>
+        <a href="/atualizar-produto/<%= product.ID %>" class="edit-button" >Editar</a>
+        <a class="delete-button">Deletar</a>
       </div>
     </div>
   <% }); %>
 </div>
 <label for="categoria">Filtrar por Categoria:</label>
-  <select id="categoria" name="categoria">
-      <option value="">Todas as Categorias</option>
-      <% categorias.forEach(categoria => { %>
-          <option value="<%= categoria %>"><%= categoria.Nome %></option>
-      <% }); %>
-  </select>
+<select id="categoria" name="categoria">
+    <option value="">Todas as Categorias</option>
+    <% categorias.forEach(categoria => { %>
+        <option value="<%= categoria %>"><%= categoria.Nome %></option>
+    <% }); %>
+</select>
