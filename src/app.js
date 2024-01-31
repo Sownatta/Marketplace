@@ -6,6 +6,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const createNewDb = require('./config/createdb');
+const methodOverride = require('method-override');
 
 require('dotenv').config();
 
@@ -13,7 +14,7 @@ const app = express();
 
 //Configuração Express-session
 app.use(session({
-  secret: "apisenha123",
+  secret: "senha123",
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false }
@@ -27,6 +28,7 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
+app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '..', 'public', 'stylesheets')));
