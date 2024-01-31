@@ -18,9 +18,11 @@ routes.get('/', produtos.redirect);
 routes.get('/home', isAuthenticated, produtos.home);
 routes.get('/catalogo', produtos.catalogo);
 routes.get('/produto/:id', isAuthenticated, produtos.produto);
-routes.post('/cadastrar-produto', produtos.inserir);
+routes.get('/cadastrar-produto', isAuthenticated, produtos.cadastrarProduto);
+routes.get('/atualizar-produto/:id', isAuthenticated, produtos.atualizarProduto);
+routes.post('/cadastrar-produto', isAuthenticated, produtos.inserir);
 routes.put('/produto/:id', produtos.atualizar);
-routes.patch('/produto/:id', isAuthenticated, produtos.atualizarParcial);
+routes.patch('/produto/:id', produtos.atualizarParcial);
 routes.delete('/produto/:id', produtos.delete);
 
 //Rotas dos usuarios
@@ -31,7 +33,7 @@ routes.post('/login', usuarios.logged);
 routes.get('/cadastrar-usuario', isAuthenticated, usuarios.cadastrar);
 routes.post('/cadastrar-usuario', usuarios.cadastro);
 routes.put('/usuario/:id', usuarios.atualizarUsuario);
-routes.patch('/usuario/:id', isAuthenticated, usuarios.attParcialUsuario);
+routes.patch('/usuario/:id', usuarios.attParcialUsuario);
 routes.delete('/usuario/:id', usuarios.deletarUsuario);
 
 module.exports = routes;
