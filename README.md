@@ -95,8 +95,3 @@ A persistencia dos dados pode ocorrer via JSON. Tera pontos extras quem realizar
 
 ### Ícaro Santos
 - LinkedIn: [Ícaro Santos](https://www.linkedin.com/in/santos-icaro/)
-- GitHub: [Ícaro Santos](https://github.com/)
-
-### Gabriel
-- LinkedIn: [Gabriel Soares](https://www.linkedin.com/in/gabrielsoarespebr/)
-- GitHub: [Gabriel](https://github.com/gabrielsoarespebr)
