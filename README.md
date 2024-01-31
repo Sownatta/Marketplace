@@ -87,7 +87,7 @@ A persistencia dos dados pode ocorrer via JSON. Tera pontos extras quem realizar
 - Janeiro de 2024.
 - Prazo final 29 de Janeiro de 2024.
 
-## 🤖 Nosso Squad
+## 🤖 Nossa Squad
 
 ### Wilson Rocha
 - LinkedIn: [Wilson Rocha](https://www.linkedin.com/in/wilsonn-rocha/)
@@ -95,3 +95,8 @@ A persistencia dos dados pode ocorrer via JSON. Tera pontos extras quem realizar
 
 ### Ícaro Santos
 - LinkedIn: [Ícaro Santos](https://www.linkedin.com/in/santos-icaro/)
+- Github: [Ícaro Santos](https://github.com/FlightofIcarus)
+
+### Luisa Nievas
+- LinkedIn: [Luisa Nievas](https://www.linkedin.com/in/luisa-nievas/)
+- GitHub: [Luisa Nievas](https://github.com/lunievas)
