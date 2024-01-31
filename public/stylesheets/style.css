@@ -25,6 +25,22 @@ nav a {
   margin: 0 10px;
 }
 
+/*==> Cadastro de Produtos <==*/
+
+.r-product_button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.r-product_button:hover {
+  background-color: #0056b3;
+}
+
 /*==> Catalogo <==*/
 
 section {
@@ -62,7 +78,7 @@ section {
 }
 
 .product-button {
-  display: block;
+  display: inline-block;
   background-color: #007bff;
   color: white;
   text-align: center;
@@ -74,6 +90,41 @@ section {
 
 .product-button:hover {
   background-color: #0056b3;
+}
+
+.edit-button {
+  display: inline-block;
+  background-color: #0d9c60;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.edit-button:hover {
+  background-color: #0b7e4e;
+}
+
+.delete-button {
+  display: inline-block;
+  background-color: #a11e1e;
+  color: white;border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.delete-button:hover {
+  background-color: #611212;
 }
 
 label {
@@ -119,7 +170,7 @@ input {
   box-sizing: border-box;
 }
 
-button {
+.login-button {
   background-color: #007bff;
   color: white;
   padding: 10px;
@@ -129,12 +180,24 @@ button {
   width: 100%;
 }
 
-button:hover {
+.login-button:hover {
   background-color: #0056b3;
 }
 
 /*==> Cadastro de Usuário <==*/
+.register-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
 
+.register-button:hover {
+  background-color: #0056b3;
+}
 
 
 /*==> Lista de Usuários <==*/
