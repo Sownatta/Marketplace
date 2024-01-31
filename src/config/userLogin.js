@@ -8,12 +8,11 @@ async function userLogin (Email, Senha) {
         
         let verificador;
 
-        const login = await new Promise((resolve, reject) => { db.get(sqlConsultaCad, [Email, Senha], (err, row) => {
+        const usuario = await new Promise((resolve, reject) => { db.get(sqlConsultaCad, [Email, Senha], (err, row) => {
             if (err) {
                 reject(err);
             } else {
                 verificador = row;
-
                 resolve(row);
             }
         });
@@ -22,7 +21,7 @@ async function userLogin (Email, Senha) {
         
         if(verificador){
             db.close();
-            return true;
+            return usuario;
         }
 
         db.close();
